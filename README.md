@@ -1,6 +1,8 @@
 # IDS-Lab
 IDS and detections lab infrastructure deployable as docker containers.
 
+![IDS Lab schema](./docs/ids-lab.png "IDS Lab schema")
+
 # Prerequisites
 
 * `docker-compose`
