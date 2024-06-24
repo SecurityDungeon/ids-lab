@@ -1,0 +1,218 @@
+version: "3.5"
+
+services:
+
+  nginx:
+    image: nginx:latest
+    #container_name: nginx
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:80:80
+      - 127.0.0.1:443:443
+    restart: always
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.nginx
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d/:ro
+      - ./nginx/patch:/var/www/patch/:ro
+
+  wordpress:
+    image: wordpress:latest
+    #container_name: wordpress
+    restart: always
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:8080:80
+    environment:
+      - WORDPRESS_DB_HOST=mysql
+      - WORDPRESS_DB_USER
+      - WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_NAME
+    depends_on:
+      - fluentbit
+      - mysql
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.wordpress
+    volumes:
+      - wordpress:/var/www/html
+
+  mysql:
+    image: mysql:8.0
+    #container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
+    networks:
+      - lab
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.mysql
+    volumes:
+      - mysqldb:/var/lib/mysql
+
+  accounting:
+    image: linuxserver/rdesktop:ubuntu-openbox
+    #container_name: accounting
+    restart: always
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:3389:3389
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.accounting
+
+  wireguard:
+    image: linuxserver/wireguard:latest
+    #container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - wgconfig:/config/wg_confs:ro
+    networks:
+      - lab
+    ports:
+      # port for wireguard-ui. this must be set here as the `wireguard-ui` container joins the network of this container and hasn't its own network over which it could publish the ports
+      #- 5000:5000
+      # port of the wireguard server
+      - 51820:51820/udp
+    environment:
+      # enable server mode
+      - PEERS=0
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.wireguard
+
+  wireguard-ui:
+    image: ngoduykhanh/wireguard-ui:latest
+    #container_name: wireguard-ui  
+    depends_on:
+      - wireguard
+    cap_add:
+      - NET_ADMIN
+    # use the network of the 'wireguard' service. this enables to show active clients in the status page
+    #network_mode: service:wireguard
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:5000:5000
+    environment:
+      - SENDGRID_API_KEY
+      - EMAIL_FROM_ADDRESS
+      - EMAIL_FROM_NAME
+      - TELEGRAM_TOKEN
+      - TELEGRAM_ALLOW_CONF_REQUEST=false
+      - TELEGRAM_FLOOD_WAIT=60  
+      - SESSION_SECRET
+      - WGUI_USERNAME=admin
+      - WGUI_PASSWORD=admin
+      - WG_CONF_TEMPLATE
+      - WGUI_MANAGE_START=true
+      - WGUI_MANAGE_RESTART=true
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.wireguard-ui
+    #logging:
+    #  driver: json-file
+    #  options:
+    #    max-size: 50m
+    volumes:
+      - wgdb:/app/db
+      - wgconfig:/etc/wireguard
+
+  fluentbit:
+    image: fluent/fluent-bit:latest
+    #container_name: fluentbit
+    restart: always
+    depends_on:
+      - openobserve
+    environment:
+      - ZO_ROOT_USER_EMAIL
+      - ZO_ROOT_USER_PASSWORD
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:24224:24224
+      - 127.0.0.1:24224:24224/udp
+    volumes:
+      - ./fluent:/fluent-bit/etc:ro
+      - suricatalogs:/var/log/suricata:ro
+
+  openobserve:
+    image: openobserve/openobserve:latest
+    #container_name: openobserve
+    restart: always
+    environment:
+      - ZO_ROOT_USER_EMAIL
+      - ZO_ROOT_USER_PASSWORD
+      - ZO_INGEST_ALLOWED_UPTO=24
+      - ZO_TELEMETRY=false
+    networks:
+      - lab
+    ports:
+      - 127.0.0.1:5080:5080
+    volumes:
+      - openobserve:/data
+
+  suricata:
+    image: jasonish/suricata:latest
+    #container_name: suricata
+    restart: always
+    #command: -i eth0
+    #networks:
+    #  - lab
+    command: -i br-lab 'not port 24224 and not port 5080'
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.suricata
+    volumes:
+      - ./suricata:/etc/suricata
+      - suricatarules:/var/lib/suricata
+      - suricatarun:/var/run/suricata
+      - suricatalogs:/var/log/suricata
+
+networks:
+  lab:
+    driver_opts:
+      com.docker.network.bridge.name: br-lab
+
+volumes:
+  wordpress:
+  mysqldb:
+  wgconfig:
+  wgdb:
+  openobserve:
+  suricatarules:
+  suricatarun:
+  suricatalogs:

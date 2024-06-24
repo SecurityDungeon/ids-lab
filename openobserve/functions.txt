@@ -1,0 +1,8 @@
+# wordpress
+. |=parse_apache_log!(.log, "combined")
+
+
+# suricata eve.json
+ts = ._timestamp
+. = parse_json!(.log)
+._timestamp = ts 
