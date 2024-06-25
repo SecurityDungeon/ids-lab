@@ -184,7 +184,7 @@ services:
     #command: -i eth0
     #networks:
     #  - lab
-    command: -i br-lab 'not port 24224 and not port 5080'
+    command: -i br-lab 'not port 24224 and not tcp port 5080 and not udp port 51820'
     network_mode: host
     cap_add:
       - NET_ADMIN
