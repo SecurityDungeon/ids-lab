@@ -1,0 +1,1916 @@
+{
+  "version": 3,
+  "dashboardId": "7211249511669170197",
+  "title": "Lab Dashboard",
+  "description": "Alerts and Flows from IDS Suricata; Logs from WordPress; Windows Event logs and Sysmon logs",
+  "role": "",
+  "owner": "",
+  "created": "2024-06-25T06:12:10.146Z",
+  "tabs": [
+    {
+      "tabId": "default",
+      "name": "Suricata Alerts",
+      "panels": [
+        {
+          "id": "Panel_ID7551710",
+          "type": "table",
+          "title": "Detections",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": true
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT alert_severity as \"x_axis_1\", alert_category as \"x_axis_2\", alert_signature as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3 ORDER BY x_axis_1 ASC, y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Alert Severity",
+                    "alias": "x_axis_1",
+                    "column": "alert_severity",
+                    "color": null,
+                    "sortBy": "ASC"
+                  },
+                  {
+                    "label": "Alert Category",
+                    "alias": "x_axis_2",
+                    "column": "alert_category",
+                    "color": null
+                  },
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_3",
+                    "column": "alert_signature",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 7,
+            "y": 0,
+            "w": 29,
+            "h": 7,
+            "i": 1
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID4889310",
+          "type": "table",
+          "title": "Source IP Addresses",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [
+              {
+                "name": "VirusTotal",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.virustotal.com/gui/ip-address/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Shodan",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.shodan.io/host/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Censys",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://search.censys.io/hosts/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "IPinfo",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://ipinfo.io/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT src_ip as \"x_axis_1\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Source IP",
+                    "alias": "x_axis_1",
+                    "column": "src_ip",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 36,
+            "y": 0,
+            "w": 6,
+            "h": 7,
+            "i": 2
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID4830110",
+          "type": "table",
+          "title": "Destination IP Addresses",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [
+              {
+                "name": "VirusTotal",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.virustotal.com/gui/ip-address/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Shodan",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.shodan.io/host/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Censys",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://search.censys.io/hosts/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "IPinfo",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://ipinfo.io/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT dest_ip as \"x_axis_1\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Destination IP",
+                    "alias": "x_axis_1",
+                    "column": "dest_ip",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 42,
+            "y": 0,
+            "w": 6,
+            "h": 7,
+            "i": 3
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID7533410",
+          "type": "pie",
+          "title": "Alert Severity",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "bottom",
+            "unit": "numbers",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT alert_severity as \"x_axis_1\", count(alert_severity) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Alert Severity",
+                    "alias": "x_axis_1",
+                    "column": "alert_severity",
+                    "color": null,
+                    "sortBy": "ASC"
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Alert Severity",
+                    "alias": "y_axis_1",
+                    "column": "alert_severity",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 7,
+            "h": 7,
+            "i": 4
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID5644110",
+          "type": "stacked",
+          "title": "Histogram",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "right",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp) as \"x_axis_1\", alert_signature as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2 ORDER BY x_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "_timestamp",
+                    "color": null,
+                    "aggregationFunction": "histogram",
+                    "sortBy": "ASC"
+                  },
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_2",
+                    "column": "alert_signature",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Alerts",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 7,
+            "w": 48,
+            "h": 7,
+            "i": 5
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID4973310",
+          "type": "table",
+          "title": "Alerted Connections",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT _timestamp as \"x_axis_1\", alert_signature as \"x_axis_2\", src_ip as \"x_axis_3\", src_port as \"x_axis_4\", dest_ip as \"x_axis_5\", dest_port as \"x_axis_6\", proto as \"x_axis_7\", app_proto as \"x_axis_8\", http_hostname as \"x_axis_9\", http_url as \"x_axis_10\", http_http_method as \"x_axis_11\", http_status as \"x_axis_12\", http_length as \"x_axis_13\", http_http_user_agent as \"x_axis_14\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14 ORDER BY x_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_alerts",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "_timestamp",
+                    "color": null,
+                    "sortBy": "DESC",
+                    "args": [
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_2",
+                    "column": "alert_signature",
+                    "color": null
+                  },
+                  {
+                    "label": "Src Ip",
+                    "alias": "x_axis_3",
+                    "column": "src_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Src Port",
+                    "alias": "x_axis_4",
+                    "column": "src_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Ip",
+                    "alias": "x_axis_5",
+                    "column": "dest_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Port",
+                    "alias": "x_axis_6",
+                    "column": "dest_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Proto",
+                    "alias": "x_axis_7",
+                    "column": "proto",
+                    "color": null
+                  },
+                  {
+                    "label": "App Proto",
+                    "alias": "x_axis_8",
+                    "column": "app_proto",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Hostname",
+                    "alias": "x_axis_9",
+                    "column": "http_hostname",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Url",
+                    "alias": "x_axis_10",
+                    "column": "http_url",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Http Method",
+                    "alias": "x_axis_11",
+                    "column": "http_http_method",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Status",
+                    "alias": "x_axis_12",
+                    "column": "http_status",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Length",
+                    "alias": "x_axis_13",
+                    "column": "http_length",
+                    "color": null
+                  },
+                  {
+                    "label": "Http Http User Agent",
+                    "alias": "x_axis_14",
+                    "column": "http_http_user_agent",
+                    "color": null
+                  }
+                ],
+                "y": [],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 14,
+            "w": 48,
+            "h": 9,
+            "i": 6
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        }
+      ]
+    },
+    {
+      "tabId": "75402",
+      "name": "Suricata NetFlows",
+      "panels": [
+        {
+          "id": "Panel_ID7777810",
+          "type": "table",
+          "title": "Top Talkers - Src IP",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "bytes",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT src_ip as \"x_axis_1\", sum(flow_bytes_toserver) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Src Ip",
+                    "alias": "x_axis_1",
+                    "column": "src_ip",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_1",
+                    "column": "flow_bytes_toserver",
+                    "color": "#5960b2",
+                    "aggregationFunction": "sum",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 24,
+            "y": 0,
+            "w": 6,
+            "h": 9,
+            "i": 1
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6810410",
+          "type": "table",
+          "title": "Top Talkers - Dest IP",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "bytes",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT dest_ip as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Dest Ip",
+                    "alias": "x_axis_1",
+                    "column": "dest_ip",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_1",
+                    "column": "flow_bytes_toclient",
+                    "color": "#5960b2",
+                    "aggregationFunction": "sum",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 30,
+            "y": 0,
+            "w": 6,
+            "h": 9,
+            "i": 2
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6308810",
+          "type": "table",
+          "title": "NetFlows",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT _timestamp as \"x_axis_1\", src_ip as \"x_axis_2\", src_port as \"x_axis_3\", dest_ip as \"x_axis_4\", dest_port as \"x_axis_5\", proto as \"x_axis_6\", flow_bytes_toclient as \"x_axis_7\", flow_bytes_toserver as \"x_axis_8\", flow_pkts_toclient as \"x_axis_9\", flow_pkts_toserver as \"x_axis_10\", flow_age as \"x_axis_11\", flow_start as \"x_axis_12\", flow_end as \"x_axis_13\", flow_alerted as \"x_axis_14\", tcp_tcp_flags_tc as \"x_axis_15\", tcp_tcp_flags_ts as \"x_axis_16\", flow_reason as \"x_axis_17\", flow_state as \"x_axis_18\"  FROM \"suricata_flows\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14, x_axis_15, x_axis_16, x_axis_17, x_axis_18 ORDER BY x_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "_timestamp",
+                    "color": null,
+                    "sortBy": "DESC",
+                    "args": [
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Src Ip",
+                    "alias": "x_axis_2",
+                    "column": "src_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Src Port",
+                    "alias": "x_axis_3",
+                    "column": "src_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Ip",
+                    "alias": "x_axis_4",
+                    "column": "dest_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Port",
+                    "alias": "x_axis_5",
+                    "column": "dest_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Proto",
+                    "alias": "x_axis_6",
+                    "column": "proto",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Bytes Toclient",
+                    "alias": "x_axis_7",
+                    "column": "flow_bytes_toclient",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Bytes Toserver",
+                    "alias": "x_axis_8",
+                    "column": "flow_bytes_toserver",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Pkts Toclient",
+                    "alias": "x_axis_9",
+                    "column": "flow_pkts_toclient",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Pkts Toserver",
+                    "alias": "x_axis_10",
+                    "column": "flow_pkts_toserver",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Duration",
+                    "alias": "x_axis_11",
+                    "column": "flow_age",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Start",
+                    "alias": "x_axis_12",
+                    "column": "flow_start",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow End",
+                    "alias": "x_axis_13",
+                    "column": "flow_end",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Alerted",
+                    "alias": "x_axis_14",
+                    "column": "flow_alerted",
+                    "color": null
+                  },
+                  {
+                    "label": "Tcp Tcp Flags Tc",
+                    "alias": "x_axis_15",
+                    "column": "tcp_tcp_flags_tc",
+                    "color": null
+                  },
+                  {
+                    "label": "Tcp Tcp Flags Ts",
+                    "alias": "x_axis_16",
+                    "column": "tcp_tcp_flags_ts",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow Reason",
+                    "alias": "x_axis_17",
+                    "column": "flow_reason",
+                    "color": null
+                  },
+                  {
+                    "label": "Flow State",
+                    "alias": "x_axis_18",
+                    "column": "flow_state",
+                    "color": null
+                  }
+                ],
+                "y": [],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 9,
+            "w": 48,
+            "h": 14,
+            "i": 3
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID7176010",
+          "type": "bar",
+          "title": "Flow Bytes",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "bytes",
+            "decimals": 2,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp) as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\", sum(flow_bytes_toserver) as \"y_axis_2\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "_timestamp",
+                    "color": null,
+                    "aggregationFunction": "histogram",
+                    "sortBy": "ASC"
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes Toclient",
+                    "alias": "y_axis_1",
+                    "column": "flow_bytes_toclient",
+                    "color": "#5960b2",
+                    "aggregationFunction": "sum"
+                  },
+                  {
+                    "label": "Bytes Toserver",
+                    "alias": "y_axis_2",
+                    "column": "flow_bytes_toserver",
+                    "color": "#c23531",
+                    "aggregationFunction": "sum"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 24,
+            "h": 9,
+            "i": 4
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6188710",
+          "type": "table",
+          "title": "Top Talkers - Src Port",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "bytes",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT cast(src_port as text) as \"x_axis_2\", sum(flow_bytes_toserver) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_2 ORDER BY y_axis_1 DESC",
+              "customQuery": true,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Src Port",
+                    "alias": "x_axis_2",
+                    "column": "x_axis_2",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null,
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 36,
+            "y": 0,
+            "w": 6,
+            "h": 9,
+            "i": 5
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID2480710",
+          "type": "table",
+          "title": "Top Talkers - Dest Port",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "bytes",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT cast(dest_port as text) as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": true,
+              "fields": {
+                "stream": "suricata_flows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Dest Port",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Bytes",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": null,
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 42,
+            "y": 0,
+            "w": 6,
+            "h": 9,
+            "i": 6
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        }
+      ]
+    },
+    {
+      "tabId": "30262",
+      "name": "Web Logs",
+      "panels": [
+        {
+          "id": "Panel_ID1550210",
+          "type": "stacked",
+          "title": "Response Codes Rates",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "right",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": true,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp) as \"x_axis_1\", code as \"x_axis_2\", count(code) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1, x_axis_2 ORDER BY x_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Timestamp",
+                    "alias": "x_axis_1",
+                    "column": "_timestamp",
+                    "color": null,
+                    "aggregationFunction": "histogram",
+                    "sortBy": "ASC",
+                    "args": [
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Code",
+                    "alias": "x_axis_2",
+                    "column": "code",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Code",
+                    "alias": "y_axis_1",
+                    "column": "code",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 37,
+            "h": 8,
+            "i": 1
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID8547310",
+          "type": "pie",
+          "title": "Response Codes Distribution",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "right",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT code as \"x_axis_1\", count(code) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Code",
+                    "alias": "x_axis_1",
+                    "column": "code",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Code",
+                    "alias": "y_axis_1",
+                    "column": "code",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 37,
+            "y": 0,
+            "w": 10,
+            "h": 8,
+            "i": 2
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6798210",
+          "type": "bar",
+          "title": "Top Talkers",
+          "description": "",
+          "config": {
+            "show_legends": false,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT host as \"x_axis_1\", count(host) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Client",
+                    "alias": "x_axis_1",
+                    "column": "host",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Requests",
+                    "alias": "y_axis_1",
+                    "column": "host",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 8,
+            "w": 25,
+            "h": 8,
+            "i": 3
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID1795510",
+          "type": "bar",
+          "title": "Top URLs",
+          "description": "",
+          "config": {
+            "show_legends": false,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT path as \"x_axis_1\", count(path) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "URL",
+                    "alias": "x_axis_1",
+                    "column": "path",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Requests",
+                    "alias": "y_axis_1",
+                    "column": "path",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 25,
+            "y": 8,
+            "w": 22,
+            "h": 8,
+            "i": 4
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID726110",
+          "type": "table",
+          "title": "User Agents",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT agent as \"x_axis_1\", count(agent) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "User Agent",
+                    "alias": "x_axis_1",
+                    "column": "agent",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "agent",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 16,
+            "w": 25,
+            "h": 8,
+            "i": 5
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID1232610",
+          "type": "heatmap",
+          "title": "Response Code and Method",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT code as \"x_axis_1\", method as \"y_axis_1\", count(code) as \"z_axis_1\"  FROM \"web\"  GROUP BY x_axis_1, y_axis_1 ORDER BY x_axis_1 ASC, y_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "web",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Code",
+                    "alias": "x_axis_1",
+                    "column": "code",
+                    "color": null,
+                    "sortBy": "ASC"
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Method",
+                    "alias": "y_axis_1",
+                    "column": "method",
+                    "color": "#5960b2",
+                    "sortBy": "ASC"
+                  }
+                ],
+                "z": [
+                  {
+                    "label": "Code",
+                    "alias": "z_axis_1",
+                    "column": "code",
+                    "color": "#c23531",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 25,
+            "y": 16,
+            "w": 23,
+            "h": 8,
+            "i": 6
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "list": [],
+    "showDynamicFilters": true
+  },
+  "defaultDatetimeDuration": {
+    "type": "relative",
+    "relativeTimePeriod": "1d",
+    "startTime": 1719212067492000,
+    "endTime": 1719298467492000
+  }
+}
