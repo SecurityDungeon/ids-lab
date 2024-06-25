@@ -9,8 +9,8 @@
 .q-list.leftNavList > a[name="settings"],
 .q-list.leftNavList > div[name="slack"],
 .q-toolbar > button:nth-child(4),
-.my-card.card-container > div.q-py-sm
+.my-card.card-container > div.q-py-sm,
+button[title^="Delete"]
 {
   display: none;
 }
-
