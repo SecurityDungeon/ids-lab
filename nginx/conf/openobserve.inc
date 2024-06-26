@@ -1,5 +1,3 @@
-    server_name siem;
-
     client_body_timeout 300s;
     client_max_body_size 100M;
 

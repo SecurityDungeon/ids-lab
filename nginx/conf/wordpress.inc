@@ -1,5 +1,3 @@
-    server_name www;
-
     location / {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
