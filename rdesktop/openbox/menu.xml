@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+<menu id="root-menu" label="MENU">
+<item label="Terminal" icon="/usr/share/icons/Adwaita/48x48/devices/computer.png"><action name="Execute"><command>/usr/bin/st</command></action></item>
+<item label="Grisbi" icon="/usr/share/icons/gnome/48x48/mimetypes/gnome-mime-application-grisbi.png" ><action name="Execute"><command>/usr/bin/grisbi</command></action></item>
+<!--<item label="Firefox" icon="/usr/share/icons/hicolor/48x48/apps/firefox.png"><action name="Execute"><command>/usr/bin/firefox</command></action></item>-->
+<item label="OBConf" icon="/usr/share/pixmaps/obconf.png"><action name="Execute"><command>/usr/bin/obconf</command></action></item>
+<item label="Reload OB"><action name="Reconfigure"/></item>
+<separator />
+<item label="Log Out"><action name="Exit"><prompt>yes</prompt></action> </item>
+</menu>
+</openbox_menu>
