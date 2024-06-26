@@ -3,4 +3,5 @@
 *.bak
 *~
 *.log
+*.pem
 .env
