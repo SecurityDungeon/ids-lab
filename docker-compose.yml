@@ -78,6 +78,9 @@ services:
       driver: fluentd
       options:
         tag: docker.accounting
+    volumes:
+      - rdesktop:/config
+      - ./rdesktop/openbox:/config/.config/openbox
 
   wireguard:
     image: linuxserver/wireguard:latest
@@ -210,6 +213,7 @@ networks:
 volumes:
   wordpress:
   mysqldb:
+  rdesktop:
   wgconfig:
   wgdb:
   openobserve:
