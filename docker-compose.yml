@@ -20,6 +20,7 @@ services:
         tag: docker.nginx
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d/:ro
+      - ./nginx/ssl:/etc/nginx/ssl/:ro
       - ./nginx/patch:/var/www/patch/:ro
 
   wordpress:
