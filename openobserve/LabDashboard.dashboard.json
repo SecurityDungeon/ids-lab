@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "dashboardId": "7211249511669170197",
+  "dashboardId": "7211623230124064771",
   "title": "Lab Dashboard",
   "description": "Alerts and Flows from IDS Suricata; Logs from WordPress; Windows Event logs and Sysmon logs",
   "role": "",
@@ -1896,6 +1896,918 @@
             "w": 23,
             "h": 8,
             "i": 6
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        }
+      ]
+    },
+    {
+      "tabId": "93489",
+      "name": "Windows Logs",
+      "panels": [
+        {
+          "id": "Panel_ID3046710",
+          "type": "donut",
+          "title": "Providers",
+          "description": "",
+          "config": {
+            "show_legends": false,
+            "legends_position": "right",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_provider__name as \"x_axis_1\", count(system_provider__name) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "System Provider Name",
+                    "alias": "x_axis_1",
+                    "column": "system_provider__name",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "System Provider Name",
+                    "alias": "y_axis_1",
+                    "column": "system_provider__name",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 20,
+            "y": 0,
+            "w": 10,
+            "h": 9,
+            "i": 1
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6883210",
+          "type": "donut",
+          "title": "Channels",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "bottom",
+            "decimals": 2,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_channel as \"x_axis_1\", count(system_channel) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "System Channel",
+                    "alias": "x_axis_1",
+                    "column": "system_channel",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "System Channel",
+                    "alias": "y_axis_1",
+                    "column": "system_channel",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 10,
+            "y": 0,
+            "w": 10,
+            "h": 9,
+            "i": 2
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID5566110",
+          "type": "donut",
+          "title": "Computers",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 2,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", count(system_computer) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "System Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "System Computer",
+                    "alias": "y_axis_1",
+                    "column": "system_computer",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": []
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 10,
+            "h": 9,
+            "i": 3
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID8834310",
+          "type": "table",
+          "title": "Logons",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", data_targetusername as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Security') AND system_eventid IN ('4624') GROUP BY x_axis_1, x_axis_2 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  },
+                  {
+                    "label": "User Name",
+                    "alias": "x_axis_2",
+                    "column": "data_targetusername",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Security"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  },
+                  {
+                    "type": "list",
+                    "values": [
+                      "4624"
+                    ],
+                    "column": "system_eventid",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 9,
+            "w": 10,
+            "h": 9,
+            "i": 4
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID6878010",
+          "type": "table",
+          "title": "Processes",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", data_newprocessname as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Security') AND system_eventid IN ('4688') GROUP BY x_axis_1, x_axis_2 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  },
+                  {
+                    "label": "Process Name",
+                    "alias": "x_axis_2",
+                    "column": "data_newprocessname",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Security"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  },
+                  {
+                    "type": "list",
+                    "values": [
+                      "4688"
+                    ],
+                    "column": "system_eventid",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 10,
+            "y": 9,
+            "w": 15,
+            "h": 9,
+            "i": 5
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID428610",
+          "type": "donut",
+          "title": "Sysmon Events",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": "bottom",
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_eventid as \"x_axis_1\", count(system_eventid) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "System Eventid",
+                    "alias": "x_axis_1",
+                    "column": "system_eventid",
+                    "color": null,
+                    "sortBy": "ASC"
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "System Eventid",
+                    "alias": "y_axis_1",
+                    "column": "system_eventid",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Microsoft-Windows-Sysmon/Operational"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 30,
+            "y": 0,
+            "w": 18,
+            "h": 9,
+            "i": 6
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID9837710",
+          "type": "table",
+          "title": "Sysmon Connections",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_2\", data_destinationip as \"x_axis_3\", data_destinationport as \"x_axis_4\", data_destinationhostname as \"x_axis_5\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('3') GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  },
+                  {
+                    "label": "Image",
+                    "alias": "x_axis_2",
+                    "column": "data_image",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest IP",
+                    "alias": "x_axis_3",
+                    "column": "data_destinationip",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Port",
+                    "alias": "x_axis_4",
+                    "column": "data_destinationport",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Hostname",
+                    "alias": "x_axis_5",
+                    "column": "data_destinationhostname",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Microsoft-Windows-Sysmon/Operational"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  },
+                  {
+                    "type": "list",
+                    "values": [
+                      "3"
+                    ],
+                    "column": "system_eventid",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 18,
+            "w": 25,
+            "h": 9,
+            "i": 7
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID574910",
+          "type": "table",
+          "title": "Sysmon DNS Queries",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_2\", data_queryname as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('22') GROUP BY x_axis_1, x_axis_2, x_axis_3 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  },
+                  {
+                    "label": "Image",
+                    "alias": "x_axis_2",
+                    "column": "data_image",
+                    "color": null
+                  },
+                  {
+                    "label": "Query",
+                    "alias": "x_axis_3",
+                    "column": "data_queryname",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Microsoft-Windows-Sysmon/Operational"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  },
+                  {
+                    "type": "list",
+                    "values": [
+                      "22"
+                    ],
+                    "column": "system_eventid",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 25,
+            "y": 18,
+            "w": 23,
+            "h": 9,
+            "i": 8
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_ID7427810",
+          "type": "table",
+          "title": "Sysmon Images",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "decimals": 0,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1,
+              "lat": 0,
+              "lng": 0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1,
+                "max": 100
+              },
+              "size_fixed": 2
+            },
+            "drilldown": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('1') GROUP BY x_axis_1, x_axis_3 ORDER BY y_axis_1 DESC",
+              "customQuery": false,
+              "fields": {
+                "stream": "windows",
+                "stream_type": "logs",
+                "x": [
+                  {
+                    "label": "Computer",
+                    "alias": "x_axis_1",
+                    "column": "system_computer",
+                    "color": null
+                  },
+                  {
+                    "label": "Image",
+                    "alias": "x_axis_3",
+                    "column": "data_image",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "filter": [
+                  {
+                    "type": "list",
+                    "values": [
+                      "Microsoft-Windows-Sysmon/Operational"
+                    ],
+                    "column": "system_channel",
+                    "operator": null,
+                    "value": null
+                  },
+                  {
+                    "type": "list",
+                    "values": [
+                      "1"
+                    ],
+                    "column": "system_eventid",
+                    "operator": null,
+                    "value": null
+                  }
+                ]
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1,
+                "limit": 0,
+                "min": 0,
+                "max": 100
+              }
+            }
+          ],
+          "layout": {
+            "x": 25,
+            "y": 9,
+            "w": 23,
+            "h": 9,
+            "i": 9
           },
           "htmlContent": "",
           "markdownContent": ""
