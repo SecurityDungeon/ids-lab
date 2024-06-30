@@ -47,7 +47,7 @@ cp debian/grisbi/usr/bin/grisbi /usr/local/bin/
 
   - transfer patched grisbi binary to the Accounting-PC (e.g. via wordpress)
 - *(optionally)* monitor changes in the password/keylog file and exfiltrate the data via DNS
-  - the example of monitoring script below converts the captured password to hexadecimal string and exfiltrates it via DNS. DNS query of type X25 to the domain in the form of `[two chars + two digits].com` is needed to trigger Suricata detection *ET MALWARE DNSG - Data Exfiltration via DNS* with *sid:2028631*
+  - the example of monitoring script below converts the captured password to hexadecimal string and exfiltrates it via DNS. DNS query of type X25 to the domain in the form of `[two chars + two digits].com` is needed to trigger Suricata detection **ET MALWARE DNSG - Data Exfiltration via DNS** (sid:2028631)
 
 ### Examples
 - grisbi patch
