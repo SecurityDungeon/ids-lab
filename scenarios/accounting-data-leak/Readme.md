@@ -1,6 +1,6 @@
 # Accounting data leak
 
-** For educational purposes only! **
+**For educational purposes only!**
 
 **Warning:** This scenario could trigger the IDS detections on your network.
 
@@ -29,8 +29,8 @@ sudo apt-get install -y grisbi xxd host
   - attacker can use keylogger on Accounting-PC, or
   - attacker can create patched version of grisbi, which saves the password somewhere (default scenario)
 - patched version of grisbi, patch function `gsb_file_util_ask_for_crypt_key`:
-  - on the Attacker's PC:
-  ```
+  - on the Attacker's PC: 
+```
 apt-get install grisbi
 apt-get install devscripts dpkg-dev vim
 apt-get build-dep grisbi
@@ -44,6 +44,7 @@ debuild -b -uc -us
 # or use only the modified version of grisbi binary
 cp debian/grisbi/usr/bin/grisbi /usr/local/bin/
 ```
+
   - transfer patched grisbi binary to the Accounting-PC (e.g. via wordpress)
 - *(optionally)* monitor changes in the password/keylog file and exfiltrate the data via DNS
   - the example of monitoring script below converts the captured password to hexadecimal string and exfiltrates it via DNS. DNS query of type X25 to the domain in the form of `[two chars + two digits].com` is needed to trigger Suricata detection *ET MALWARE DNSG - Data Exfiltration via DNS* with *sid:2028631*
