@@ -6,3 +6,44 @@
 ts = ._timestamp
 . = parse_json!(.log)
 ._timestamp = ts 
+
+
+# parse_winevtlog
+body = parse_xml!(.body)
+.System = body.Event.System
+.Data = {}
+dataarray, err = array(body.Event.EventData.Data)
+if err == null {
+    for_each(dataarray) -> |_index, attr| {
+        key, err = string(attr.@Name)
+        if err == null {
+            value = attr.text
+            dict = map_keys({"_": value}) -> |k| { key }
+            .Data |= dict
+        }
+    }
+} 
+.
+
+
+## parse_winevtlog
+#body = parse_xml!(.body)
+#.System = body.Event.System
+#.Data = {}
+#for_each(array!(body.Event.EventData.Data)) -> |_index, attr| {
+#    key = string!(attr.@Name)
+#    value = string!(attr.text)
+#    dict = map_keys({"_": value}) -> |k| { key }
+#    .Data |= dict
+#}
+
+#for_each(array!(body.Event.EventData.Data)) -> |_index, attr| {
+#    key = attr.@Name
+#    value = attr.text
+#    data, err = "{\"{{key}}\":\"{{value}}\"}"
+#    eventdata, err = parse_json(string(data))
+#    if err == null {
+#        .Data |= object!(eventdata)
+#    }
+#} 
+ .
