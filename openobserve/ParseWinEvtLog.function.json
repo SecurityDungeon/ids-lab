@@ -1,5 +1,5 @@
 {
-  "function": "body = parse_xml!(.body)\n.System = body.Event.System\n.Data = {}\ndataarray, err = array(body.Event.EventData.Data)\nif err == null {\n    for_each(dataarray) -> |_index, attr| {\n        key, err = string(attr.@Name)\n        if err == null {\n            value = attr.text\n            dict = map_keys({\"_\": value}) -> |k| { key }\n            .Data |= dict\n        }\n    }\n} \n.",
+  "function": "body = parse_xml!(.body)\n.System = body.Event.System\n.Data = {}\ndataarray, err = array(body.Event.EventData.Data)\nif err == null {\n    for_each(dataarray) -> |_index, attr| {\n        key, err = string(attr.@Name)\n        if err == null {\n            value = attr.text\n            dict = map_keys({\"_\": value}) -> |k| { key }\n            .Data |= dict\n        }\n    }\n}\nif body.Event.UserData != null {\n    .UserData = body.Event.UserData\n}\n.",
   "name": "parse_winevtlog",
   "params": "row",
   "numArgs": 1,
