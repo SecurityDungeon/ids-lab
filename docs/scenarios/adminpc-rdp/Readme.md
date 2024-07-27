@@ -8,7 +8,7 @@
 - AdminPC
   - Windows VM or VPS connected to IDS-Lab via wireguard
   - remote access enabled and allowed from the "Internet"
-    - *simulation of Home Office mode for administrator, when he needs to access his desktop in the office*
+    - *in scenario, we can simulate the Home Office mode for administrator, when he needs access to his desktop in the office*
     - allow remote connections to this computer -> System Properties -> Select Users
     - recommended: enable [process creation events and include the command line](https://logrhythm.com/blog/how-to-enable-process-creation-events-to-track-malware-and-threat-actor-activity/) (Event ID 4688)
 - Wireguard
