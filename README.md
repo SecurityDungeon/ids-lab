@@ -12,7 +12,7 @@ IDS and detections lab infrastructure deployable as docker containers.
 
 # Setup
 
-Create a copy of environment file from `.env.model` and populate it with your values and secrets. Then deploy it with `docker-compose`:
+Create a copy of environment file from `.env.model` and populate it with your values and secrets. Then generate self-signed certificate for local domain `*.ids-lab.home.arpa` and deploy the lab with `docker-compose`:
 
 ```
 curl https://github.com/SecurityDungeon/ids-lab/archive/refs/heads/main.tar.gz --output ids-lab-main.tar.gz
@@ -20,6 +20,7 @@ tar xzvf ids-lab-main.tar.gz
 cd ids-lab
 cp .env.model .env
 <edit> .env
+openssl req -x509 -newkey rsa:4096 -keyout ./nginx/ssl/privkey.pem -out ./nginx/ssl/fullchain.pem -sha256 -days 3650 -nodes -subj "/CN=*.ids-lab.home.arpa"
 docker-compose up --no-start
 docker-compose start
 ```
