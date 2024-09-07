@@ -113,6 +113,7 @@ services:
     #container_name: wireguard-ui  
     depends_on:
       - wireguard
+      - fluentbit
     cap_add:
       - NET_ADMIN
     # use the network of the 'wireguard' service. this enables to show active clients in the status page
@@ -134,8 +135,6 @@ services:
       - WG_CONF_TEMPLATE
       - WGUI_MANAGE_START=true
       - WGUI_MANAGE_RESTART=true
-    depends_on:
-      - fluentbit
     logging:
       driver: fluentd
       options:
