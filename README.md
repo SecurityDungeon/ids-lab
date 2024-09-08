@@ -25,6 +25,8 @@ docker-compose up --no-start
 docker-compose start
 ```
 
+
+
 After end, the infrastructure can be stopped with `docker-compose stop` and containers can be deleted with `docker-compose down`.
 All created volumes and downloaded images can be deleted with `docker-compose down --volumes --rmi all`.
 
@@ -36,20 +38,26 @@ docker-compose down --volumes --rmi all # stop and delete docker containers, vol
 ```
 
 # Services
+If you want to access the services also via HTTPs (with self-signed certificate), add the following entry to your `/etc/hosts` file:
+
+```
+127.0.0.1	www.ids-lab.home.arpa siem.ids-lab.home.arpa wg.ids-lab.home.arpa kali.ids-lab.home.arpa
+```
+
 #### Services available from host
-* [Nginx](https://hub.docker.com/_/nginx) [http://127.0.0.1:80](http://127.0.0.1:80)
+* [Nginx](https://hub.docker.com/_/nginx) [http://127.0.0.1:80](http://127.0.0.1:80), [https://www.ids-lab.home.arpa](https://www.ids-lab.home.arpa)
   * webserver and reverse-proxy for exposing other webapps
-* [WordPress](https://hub.docker.com/_/wordpress) [http://127.0.0.1:80](http://127.0.0.1:80)
+* [WordPress](https://hub.docker.com/_/wordpress) [http://127.0.0.1:80](http://127.0.0.1:80), [https://www.ids-lab.home.arpa](https://www.ids-lab.home.arpa)
   * exposed via nginx container
   * ready to setup
-* [OpenObserve](https://github.com/openobserve/openobserve/) (SIEM) for Students: [http://127.0.0.1:8080](http://127.0.0.1:8080)
+* [OpenObserve](https://github.com/openobserve/openobserve/) (SIEM) for Students: [http://127.0.0.1:8080](http://127.0.0.1:8080), [https://siem.ids-lab.home.arpa](https://siem.ids-lab.home.arpa)
   * exposed via nginx container
   * dangerous features hidden (e.g. streams, pipelines, IAM)
   * `lab` organization with alerts and flows from Suricata and Apache logs from WordPress
 * [OpenObserve](https://github.com/openobserve/openobserve/) (SIEM) for Admin: [http://127.0.0.1:5080](http://127.0.0.1:5080)
   * all features visible
   * `admin` organization with all logs from Suricata and other Docker containers
-* [WireGuard UI](https://github.com/ngoduykhanh/wireguard-ui): [http://127.0.0.1:5000](http://127.0.0.1:5000) 
+* [WireGuard UI](https://github.com/ngoduykhanh/wireguard-ui): [http://127.0.0.1:5000](http://127.0.0.1:5000), [https://wg.ids-lab.home.arpa](https://wg.ids-lab.home.arpa)
   * web-ui management for WireGuard clients
 * [WireGuard](https://hub.docker.com/r/linuxserver/wireguard) server: [udp://0.0.0.0:51820](udp://0.0.0.0:51820)
   * available for connecting other machines (e.g. attacker or students) for direct access to the Docker containers
