@@ -10,13 +10,17 @@
 - WordPress
   - docker container
   - installed wordpress (available at port 80 or 443 of nginx container)
-  - installed and activated plugin [WP Statistics 13.0.7](https://downloads.wordpress.org/plugin/wp-statistics.13.0.7.zip)
+  - installed and activated plugin [WP Statistics 13.0.7](https://downloads.wordpress.org/plugin/wp-statistics.13.0.7.zip). Hint:
+```
+wget https://downloads.wordpress.org/plugin/wp-statistics.13.0.7.zip
+unzip wp-statistics.13.0.7.zip -d /var/lib/docker/volumes/ids-lab_wordpress/_data/wp-content/plugins/
+```
 
 ### Scenario
 - Attacker started with scanning. For example, he could use tools `nikto` and `wpscan`:
 ```
 nikto -host http://<DockerVM>:80
-wpscan -
+wpscan --url http://<DockerVM>:80
 ```
 - `wpscan` detects vulnerable version of plugin WP Statistics. It contains vulnerability 
 [CVE-2021-24340](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-24340/), an [unauthenticated SQL injection](https://wpscan.com/vulnerability/d2970cfb-0aa9-4516-9a4b-32971f41a19c/)
