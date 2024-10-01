@@ -45,6 +45,8 @@ If you want to access the services also via HTTPs (with self-signed certificate)
 ```
 
 #### Services available from host
+* [Kali Linux](https://hub.docker.com/u/kalilinux/) [http://127.0.0.1:1337](http://127.0.0.1:1337), [https://kali.ids-lab.home.arpa](https://kali.ids-lab.home.arpa)
+  * kali linux with web-based terminal emulator for performing the attacks
 * [Nginx](https://hub.docker.com/_/nginx) [http://127.0.0.1:80](http://127.0.0.1:80), [https://www.ids-lab.home.arpa](https://www.ids-lab.home.arpa)
   * webserver and reverse-proxy for exposing other webapps
 * [WordPress](https://hub.docker.com/_/wordpress) [http://127.0.0.1:80](http://127.0.0.1:80), [https://www.ids-lab.home.arpa](https://www.ids-lab.home.arpa)
