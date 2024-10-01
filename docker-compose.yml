@@ -2,11 +2,24 @@ version: "3.5"
 
 services:
 
+  kali:
+    image: kalilinux/kali-rolling:latest
+    #container_name: kali
+    networks:
+      - attacker
+    ports:
+      - 127.0.0.1:1337:1337
+    environment:
+      - KALI_PASSWORD
+    command: bash -c "echo ${KALI_PASSWORD} | passwd -s; apt update; apt install -y shellinabox net-tools bind9-dnsutils links; shellinaboxd --disable-ssl --port=1337"
+    restart: always
+
   nginx:
     image: nginx:latest
     #container_name: nginx
     networks:
       - lab
+      - attacker
     ports:
       - 127.0.0.1:80:80
       - 127.0.0.1:8080:8080
@@ -210,6 +223,7 @@ networks:
   lab:
     driver_opts:
       com.docker.network.bridge.name: br-lab
+  attacker:
 
 volumes:
   wordpress:
