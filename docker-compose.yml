@@ -3,7 +3,10 @@ version: "3.5"
 services:
 
   kali:
-    image: kalilinux/kali-rolling:latest
+    image: kali-cli:latest
+    build:
+      context: .
+      dockerfile: ./kali/Dockerfile
     #container_name: kali
     networks:
       - attacker
@@ -11,8 +14,10 @@ services:
       - 127.0.0.1:1337:1337
     environment:
       - KALI_PASSWORD
-    command: bash -c "echo ${KALI_PASSWORD} | passwd -s; apt update; apt install -y shellinabox net-tools bind9-dnsutils links; shellinaboxd --disable-ssl --port=1337"
+    command: bash -c 'echo ${KALI_PASSWORD} | passwd -s; echo "$(dig +short nginx) www www.ids-lab.home.arpa siem siem.ids-lab.home.arpa" >> /etc/hosts; shellinaboxd --disable-ssl --port=1337'
     restart: always
+    depends_on:
+      - nginx
 
   nginx:
     image: nginx:latest
