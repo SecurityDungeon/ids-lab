@@ -2,15 +2,36 @@
 
 source .env
 
+OPENOBSERVE="http://127.0.0.1:5080"
+
+openobserve_status() {
+    curl --silent -X "GET" \
+        "${OPENOBSERVE}/healthz" \
+        -H "accept: application/json" \
+    | jq -r -j .status
+}
+
+openobserve_api_get() {
+    curl --silent -X "GET" \
+        "${OPENOBSERVE}/api/$1/$2" \
+        -H "accept: application/json" \
+        -u ${ZO_ROOT_USER_EMAIL}:${ZO_ROOT_USER_PASSWORD}
+}
+
 openobserve_api_post() {
     curl --silent -X "POST" \
-        "http://127.0.0.1:5080/api/$1/$2" \
+        "${OPENOBSERVE}/api/$1/$2" \
         -H "accept: application/json" \
         -H "Content-Type: application/json" \
         -u ${ZO_ROOT_USER_EMAIL}:${ZO_ROOT_USER_PASSWORD} \
         --output /dev/null \
         --data-binary "@openobserve/$3"
 }
+
+echo "Wait until OpenObserve is ready..."
+while [[ $(openobserve_status) != "ok" ]]; do
+    sleep 1
+done
 
 echo "Create OpenObserve functions..."
 openobserve_api_post lab functions ParseWinEvtLog.function.json
