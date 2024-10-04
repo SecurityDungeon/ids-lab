@@ -25,7 +25,7 @@ openobserve_api_post() {
         -H "Content-Type: application/json" \
         -u ${ZO_ROOT_USER_EMAIL}:${ZO_ROOT_USER_PASSWORD} \
         --output /dev/null \
-        --data-binary "@openobserve/$3"
+        --data "$3"
 }
 
 echo "Wait until OpenObserve is ready..."
@@ -38,15 +38,25 @@ openobserve_api_post lab functions ParseWinEvtLog.function.json
 
 echo "Create OpenObserve saved views..."
 # Lab user
-openobserve_api_post lab savedviews WordPress.view.json
-openobserve_api_post lab savedviews SuricataAlerts.view.json
-openobserve_api_post lab savedviews SuricataFlows.view.json
-openobserve_api_post lab savedviews WindowsEventLog.view.json
-openobserve_api_post lab savedviews WindowsLogon.view.json
-openobserve_api_post lab savedviews WindowsProcess.view.json
+openobserve_api_post lab savedviews @openobserve/WordPress.view.json
+openobserve_api_post lab savedviews @openobserve/SuricataAlerts.view.json
+openobserve_api_post lab savedviews @openobserve/SuricataFlows.view.json
+openobserve_api_post lab savedviews @openobserve/WindowsEventLog.view.json
+openobserve_api_post lab savedviews @openobserve/WindowsLogon.view.json
+openobserve_api_post lab savedviews @openobserve/WindowsProcess.view.json
 
 # Admin user
-openobserve_api_post admin savedviews Docker.view.json
+openobserve_api_post admin savedviews @openobserve/Docker.view.json
 
 echo "Create OpenObserve dashboards..."
-openobserve_api_post lab dashboards LabDashboard.dashboard.json
+openobserve_api_post lab dashboards @openobserve/LabDashboard.dashboard.json
+
+echo "Create OpenObserve users..."
+openobserve_api_post lab users "{
+    \"email\": \"${ZO_STUDENT_USER_EMAIL}\",
+    \"password\": \"${ZO_STUDENT_USER_PASSWORD}\",
+    \"first_name\": \"Student\",
+    \"last_name\": \"User\",
+    \"is_external\": false,
+    \"role\": \"member\"
+}"
