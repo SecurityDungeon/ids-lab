@@ -23,7 +23,7 @@ cd ids-lab
 ```
 
 ## Automatic setup - oneliner
-If you prefer oneliner, you can download and run the setup script and it will creates ids-lab in current directory:
+If you prefer oneliner, you can download and run the setup script and it will create ids-lab in current directory:
 
 ```
 curl -s https://raw.githubusercontent.com/SecurityDungeon/ids-lab/refs/heads/main/setup-ids-lab.sh | sh
