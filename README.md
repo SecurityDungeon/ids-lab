@@ -7,12 +7,30 @@ IDS and detections lab infrastructure deployable as docker containers.
 
 * `docker-compose`
 * `curl`
+* `pwgen` or `openssl`
 * *(optional)* `jq`
-* *(optional)* `pwgen`
 
 # Setup
 
-Create a copy of environment file from `.env.model` and populate it with your values and secrets. Then generate self-signed certificate for local domain `*.ids-lab.home.arpa` and deploy the lab with `docker-compose`:
+## Automatic setup
+
+Clone this repository and run `setup-ids-lab.sh`:
+
+```
+https://github.com/SecurityDungeon/ids-lab.git
+cd ids-lab
+./setup-ids-lab.sh
+```
+
+## Automatic setup - oneliner
+If you prefer oneliner, you can download and run the setup script and it will creates ids-lab in current directory:
+
+```
+curl -s https://raw.githubusercontent.com/SecurityDungeon/ids-lab/refs/heads/main/setup-ids-lab.sh | sh
+```
+
+## Manual setup
+Download this repository (with  `curl` as in example below, or just use `git clone`). Create a copy of environment file from `.env.model` and populate it with your values and secrets. Then generate self-signed certificate for local domain `*.ids-lab.home.arpa` and deploy the lab with `docker-compose`. Finally, setup the OpenObserve dashboards and saved views with `setup-openobserve.sh`:
 
 ```
 curl https://github.com/SecurityDungeon/ids-lab/archive/refs/heads/main.tar.gz --output ids-lab-main.tar.gz
@@ -21,8 +39,10 @@ cd ids-lab
 cp .env.model .env
 <edit> .env
 openssl req -x509 -newkey rsa:4096 -keyout ./nginx/ssl/privkey.pem -out ./nginx/ssl/fullchain.pem -sha256 -days 3650 -nodes -subj "/CN=*.ids-lab.home.arpa"
-docker-compose up --no-start
+docker-compose build
+docker-compose create
 docker-compose start
+./setup-openobserbe.sh
 ```
 
 

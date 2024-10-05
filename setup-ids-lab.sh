@@ -28,7 +28,7 @@ echo "Setup mode: ${mode}"
 
 echo "Checking dependencies..."
 missing_dependency=0
-for program in docker-compose curl tar ip wc grep sed jq pwgen
+for program in docker-compose curl tar ip sort wc grep sed jq
 do
     if ! command -v ${program} 2>&1 >/dev/null
     then
@@ -36,6 +36,18 @@ do
         missing_dependency=1
     fi
 done
+if command -v pwgen 2>&1 >/dev/null
+then
+    pwgen="pwgen --capitalize --numerals --ambiguous 27 1"
+else
+    if command -v openssl 2>&1 >/dev/null
+    then
+        pwgen="openssl rand -hex 20"
+    else
+        echo "openssl and pwgen missing - at least one of them is needed for generating passwords"
+        missing_dependency=1
+    fi
+fi
 if [[ ${missing_dependency} -ne 0 ]]
 then
     echo "Please install missing dependencies"
@@ -75,6 +87,12 @@ then
 else
     echo "Preparing secrets in .env file"
     cp .env.model .env
+    templates=$(grep -o "%.*%" .env | sort -u)
+    for template in ${templates}
+    do
+        password=$(${pwgen})
+        sed -i -e "s/${template}/${password}/g" .env
+    done
 fi
 if [[ -f ./nginx/ssl/privkey.pem ]] && [[ -f ./nginx/ssl/fullchain.pem ]]
 then
