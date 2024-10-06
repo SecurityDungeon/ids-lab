@@ -8,7 +8,7 @@ openobserve_status() {
     curl --silent -X "GET" \
         "${OPENOBSERVE}/healthz" \
         -H "accept: application/json" \
-    | jq -r -j .status
+    | sed -e 's/^.*"status":"\([^"]*\)".*$/\1/g'
 }
 
 openobserve_api_get() {
