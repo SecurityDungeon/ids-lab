@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "dashboardId": "7211623230124064771",
+  "version": 4,
+  "dashboardId": "7248705476995579907",
   "title": "Lab Dashboard",
   "description": "Alerts and Flows from IDS Suricata; Logs from WordPress; Windows Event logs and Sysmon logs",
   "role": "",
@@ -20,7 +20,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "numbers",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -29,17 +29,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -50,6 +50,7 @@
           "queries": [
             {
               "query": "SELECT alert_severity as \"x_axis_1\", alert_category as \"x_axis_2\", alert_signature as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3 ORDER BY x_axis_1 ASC, y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -61,18 +62,6 @@
                     "column": "alert_severity",
                     "color": null,
                     "sortBy": "ASC"
-                  },
-                  {
-                    "label": "Alert Category",
-                    "alias": "x_axis_2",
-                    "column": "alert_category",
-                    "color": null
-                  },
-                  {
-                    "label": "Alert Signature",
-                    "alias": "x_axis_3",
-                    "column": "alert_signature",
-                    "color": null
                   }
                 ],
                 "y": [
@@ -86,15 +75,29 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Alert Category",
+                    "alias": "x_axis_2",
+                    "column": "alert_category",
+                    "color": null
+                  },
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_3",
+                    "column": "alert_signature",
+                    "color": null
+                  }
+                ],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -117,7 +120,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "numbers",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -126,17 +129,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [
               {
@@ -224,6 +227,7 @@
           "queries": [
             {
               "query": "SELECT src_ip as \"x_axis_1\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -247,15 +251,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -278,7 +283,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "numbers",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -287,17 +292,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [
               {
@@ -385,6 +390,7 @@
           "queries": [
             {
               "query": "SELECT dest_ip as \"x_axis_1\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -408,15 +414,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -439,7 +446,7 @@
             "show_legends": true,
             "legends_position": "bottom",
             "unit": "numbers",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -448,17 +455,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -469,6 +476,7 @@
           "queries": [
             {
               "query": "SELECT alert_severity as \"x_axis_1\", count(alert_severity) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -492,15 +500,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -522,7 +531,7 @@
           "config": {
             "show_legends": true,
             "legends_position": "right",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -531,17 +540,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -552,6 +561,7 @@
           "queries": [
             {
               "query": "SELECT histogram(_timestamp) as \"x_axis_1\", alert_signature as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2 ORDER BY x_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -564,12 +574,6 @@
                     "color": null,
                     "aggregationFunction": "histogram",
                     "sortBy": "ASC"
-                  },
-                  {
-                    "label": "Alert Signature",
-                    "alias": "x_axis_2",
-                    "column": "alert_signature",
-                    "color": null
                   }
                 ],
                 "y": [
@@ -582,15 +586,23 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_2",
+                    "column": "alert_signature",
+                    "color": null
+                  }
+                ],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -612,7 +624,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -621,17 +633,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -641,7 +653,8 @@
           "queryType": "sql",
           "queries": [
             {
-              "query": "SELECT _timestamp as \"x_axis_1\", alert_signature as \"x_axis_2\", src_ip as \"x_axis_3\", src_port as \"x_axis_4\", dest_ip as \"x_axis_5\", dest_port as \"x_axis_6\", proto as \"x_axis_7\", app_proto as \"x_axis_8\", http_hostname as \"x_axis_9\", http_url as \"x_axis_10\", http_http_method as \"x_axis_11\", http_status as \"x_axis_12\", http_length as \"x_axis_13\", http_http_user_agent as \"x_axis_14\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14 ORDER BY x_axis_1 DESC",
+              "query": "SELECT histogram(_timestamp) as \"x_axis_1\", alert_signature as \"x_axis_2\", src_ip as \"x_axis_3\", src_port as \"x_axis_4\", dest_ip as \"x_axis_5\", dest_port as \"x_axis_6\", proto as \"x_axis_7\", app_proto as \"x_axis_8\", http_hostname as \"x_axis_9\", http_url as \"x_axis_10\", http_http_method as \"x_axis_11\", http_status as \"x_axis_12\", http_length as \"x_axis_13\", http_http_user_agent as \"x_axis_14\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14 ORDER BY x_axis_1 DESC",
+              "vrlFunctionQuery": "",
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -652,103 +665,114 @@
                     "alias": "x_axis_1",
                     "column": "_timestamp",
                     "color": null,
+                    "aggregationFunction": "histogram",
                     "sortBy": "DESC",
-                    "args": [
-                      {
-                        "value": null
-                      }
-                    ]
+                    "isDerived": false
                   },
                   {
                     "label": "Alert Signature",
                     "alias": "x_axis_2",
                     "column": "alert_signature",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Src Ip",
                     "alias": "x_axis_3",
                     "column": "src_ip",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Src Port",
                     "alias": "x_axis_4",
                     "column": "src_port",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Dest Ip",
                     "alias": "x_axis_5",
                     "column": "dest_ip",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Dest Port",
                     "alias": "x_axis_6",
                     "column": "dest_port",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Proto",
                     "alias": "x_axis_7",
                     "column": "proto",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "App Proto",
                     "alias": "x_axis_8",
                     "column": "app_proto",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Hostname",
                     "alias": "x_axis_9",
                     "column": "http_hostname",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Url",
                     "alias": "x_axis_10",
                     "column": "http_url",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Http Method",
                     "alias": "x_axis_11",
                     "column": "http_http_method",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Status",
                     "alias": "x_axis_12",
                     "column": "http_status",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Length",
                     "alias": "x_axis_13",
                     "column": "http_length",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Http Http User Agent",
                     "alias": "x_axis_14",
                     "column": "http_http_user_agent",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   }
                 ],
                 "y": [],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -777,7 +801,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "bytes",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -786,19 +810,96 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
-            "drilldown": [],
+            "drilldown": [
+              {
+                "name": "VirusTotal",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.virustotal.com/gui/ip-address/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Shodan",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.shodan.io/host/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Censys",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://search.censys.io/hosts/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "IPinfo",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://ipinfo.io/${row.field[\"Source IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
             "connect_nulls": false,
             "no_value_replacement": "",
             "wrap_table_cells": false
@@ -807,13 +908,14 @@
           "queries": [
             {
               "query": "SELECT src_ip as \"x_axis_1\", sum(flow_bytes_toserver) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_flows",
                 "stream_type": "logs",
                 "x": [
                   {
-                    "label": "Src Ip",
+                    "label": "Source IP",
                     "alias": "x_axis_1",
                     "column": "src_ip",
                     "color": null
@@ -830,15 +932,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -861,7 +964,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "bytes",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -870,19 +973,96 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
-            "drilldown": [],
+            "drilldown": [
+              {
+                "name": "VirusTotal",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.virustotal.com/gui/ip-address/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Shodan",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.shodan.io/host/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Censys",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://search.censys.io/hosts/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "IPinfo",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://ipinfo.io/${row.field[\"Destination IP\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
             "connect_nulls": false,
             "no_value_replacement": "",
             "wrap_table_cells": false
@@ -891,13 +1071,14 @@
           "queries": [
             {
               "query": "SELECT dest_ip as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_flows",
                 "stream_type": "logs",
                 "x": [
                   {
-                    "label": "Dest Ip",
+                    "label": "Destination IP",
                     "alias": "x_axis_1",
                     "column": "dest_ip",
                     "color": null
@@ -914,15 +1095,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -944,7 +1126,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -953,17 +1135,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -973,7 +1155,8 @@
           "queryType": "sql",
           "queries": [
             {
-              "query": "SELECT _timestamp as \"x_axis_1\", src_ip as \"x_axis_2\", src_port as \"x_axis_3\", dest_ip as \"x_axis_4\", dest_port as \"x_axis_5\", proto as \"x_axis_6\", flow_bytes_toclient as \"x_axis_7\", flow_bytes_toserver as \"x_axis_8\", flow_pkts_toclient as \"x_axis_9\", flow_pkts_toserver as \"x_axis_10\", flow_age as \"x_axis_11\", flow_start as \"x_axis_12\", flow_end as \"x_axis_13\", flow_alerted as \"x_axis_14\", tcp_tcp_flags_tc as \"x_axis_15\", tcp_tcp_flags_ts as \"x_axis_16\", flow_reason as \"x_axis_17\", flow_state as \"x_axis_18\"  FROM \"suricata_flows\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14, x_axis_15, x_axis_16, x_axis_17, x_axis_18 ORDER BY x_axis_1 DESC",
+              "query": "SELECT _timestamp as \"x_axis_1\", src_ip as \"x_axis_2\", src_port as \"x_axis_3\", dest_ip as \"x_axis_4\", dest_port as \"x_axis_5\", proto as \"x_axis_6\", app_proto as \"x_axis_7\", flow_bytes_toclient as \"x_axis_8\", flow_bytes_toserver as \"x_axis_9\", flow_pkts_toclient as \"x_axis_10\", flow_pkts_toserver as \"x_axis_11\", flow_age as \"x_axis_12\", flow_start as \"x_axis_13\", flow_end as \"x_axis_14\", flow_alerted as \"x_axis_15\", tcp_tcp_flags_tc as \"x_axis_16\", tcp_tcp_flags_ts as \"x_axis_17\", flow_reason as \"x_axis_18\", flow_state as \"x_axis_19\", src_ip as \"breakdown_1\", src_port as \"breakdown_2\", dest_ip as \"breakdown_3\", dest_port as \"breakdown_4\", proto as \"breakdown_5\", flow_bytes_toclient as \"breakdown_6\", flow_bytes_toserver as \"breakdown_7\", flow_pkts_toclient as \"breakdown_8\", flow_pkts_toserver as \"breakdown_9\", flow_age as \"breakdown_10\", flow_start as \"breakdown_11\", flow_end as \"breakdown_12\", flow_alerted as \"breakdown_13\", tcp_tcp_flags_tc as \"breakdown_14\", tcp_tcp_flags_ts as \"breakdown_15\", flow_reason as \"breakdown_16\", flow_state as \"breakdown_17\"  FROM \"suricata_flows\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5, x_axis_6, x_axis_7, x_axis_8, x_axis_9, x_axis_10, x_axis_11, x_axis_12, x_axis_13, x_axis_14, x_axis_15, x_axis_16, x_axis_17, x_axis_18, x_axis_19, breakdown_1, breakdown_2, breakdown_3, breakdown_4, breakdown_5, breakdown_6, breakdown_7, breakdown_8, breakdown_9, breakdown_10, breakdown_11, breakdown_12, breakdown_13, breakdown_14, breakdown_15, breakdown_16, breakdown_17 ORDER BY x_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_flows",
@@ -995,116 +1178,244 @@
                     "label": "Src Ip",
                     "alias": "x_axis_2",
                     "column": "src_ip",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Src Port",
                     "alias": "x_axis_3",
                     "column": "src_port",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Dest Ip",
                     "alias": "x_axis_4",
                     "column": "dest_ip",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Dest Port",
                     "alias": "x_axis_5",
                     "column": "dest_port",
-                    "color": null
+                    "color": null,
+                    "isDerived": false
                   },
                   {
                     "label": "Proto",
                     "alias": "x_axis_6",
                     "column": "proto",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "App Proto",
+                    "alias": "x_axis_7",
+                    "column": "app_proto",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Bytes Toclient",
+                    "alias": "x_axis_8",
+                    "column": "flow_bytes_toclient",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Bytes Toserver",
+                    "alias": "x_axis_9",
+                    "column": "flow_bytes_toserver",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Pkts Toclient",
+                    "alias": "x_axis_10",
+                    "column": "flow_pkts_toclient",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Pkts Toserver",
+                    "alias": "x_axis_11",
+                    "column": "flow_pkts_toserver",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Duration",
+                    "alias": "x_axis_12",
+                    "column": "flow_age",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Start",
+                    "alias": "x_axis_13",
+                    "column": "flow_start",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow End",
+                    "alias": "x_axis_14",
+                    "column": "flow_end",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Alerted",
+                    "alias": "x_axis_15",
+                    "column": "flow_alerted",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Tcp Tcp Flags Tc",
+                    "alias": "x_axis_16",
+                    "column": "tcp_tcp_flags_tc",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Tcp Tcp Flags Ts",
+                    "alias": "x_axis_17",
+                    "column": "tcp_tcp_flags_ts",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow Reason",
+                    "alias": "x_axis_18",
+                    "column": "flow_reason",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Flow State",
+                    "alias": "x_axis_19",
+                    "column": "flow_state",
+                    "color": null,
+                    "isDerived": false
+                  }
+                ],
+                "y": [],
+                "z": [],
+                "breakdown": [
+                  {
+                    "label": "Src Ip",
+                    "alias": "breakdown_1",
+                    "column": "src_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Src Port",
+                    "alias": "breakdown_2",
+                    "column": "src_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Ip",
+                    "alias": "breakdown_3",
+                    "column": "dest_ip",
+                    "color": null
+                  },
+                  {
+                    "label": "Dest Port",
+                    "alias": "breakdown_4",
+                    "column": "dest_port",
+                    "color": null
+                  },
+                  {
+                    "label": "Proto",
+                    "alias": "breakdown_5",
+                    "column": "proto",
                     "color": null
                   },
                   {
                     "label": "Flow Bytes Toclient",
-                    "alias": "x_axis_7",
+                    "alias": "breakdown_6",
                     "column": "flow_bytes_toclient",
                     "color": null
                   },
                   {
                     "label": "Flow Bytes Toserver",
-                    "alias": "x_axis_8",
+                    "alias": "breakdown_7",
                     "column": "flow_bytes_toserver",
                     "color": null
                   },
                   {
                     "label": "Flow Pkts Toclient",
-                    "alias": "x_axis_9",
+                    "alias": "breakdown_8",
                     "column": "flow_pkts_toclient",
                     "color": null
                   },
                   {
                     "label": "Flow Pkts Toserver",
-                    "alias": "x_axis_10",
+                    "alias": "breakdown_9",
                     "column": "flow_pkts_toserver",
                     "color": null
                   },
                   {
                     "label": "Flow Duration",
-                    "alias": "x_axis_11",
+                    "alias": "breakdown_10",
                     "column": "flow_age",
                     "color": null
                   },
                   {
                     "label": "Flow Start",
-                    "alias": "x_axis_12",
+                    "alias": "breakdown_11",
                     "column": "flow_start",
                     "color": null
                   },
                   {
                     "label": "Flow End",
-                    "alias": "x_axis_13",
+                    "alias": "breakdown_12",
                     "column": "flow_end",
                     "color": null
                   },
                   {
                     "label": "Flow Alerted",
-                    "alias": "x_axis_14",
+                    "alias": "breakdown_13",
                     "column": "flow_alerted",
                     "color": null
                   },
                   {
                     "label": "Tcp Tcp Flags Tc",
-                    "alias": "x_axis_15",
+                    "alias": "breakdown_14",
                     "column": "tcp_tcp_flags_tc",
                     "color": null
                   },
                   {
                     "label": "Tcp Tcp Flags Ts",
-                    "alias": "x_axis_16",
+                    "alias": "breakdown_15",
                     "column": "tcp_tcp_flags_ts",
                     "color": null
                   },
                   {
                     "label": "Flow Reason",
-                    "alias": "x_axis_17",
+                    "alias": "breakdown_16",
                     "column": "flow_reason",
                     "color": null
                   },
                   {
                     "label": "Flow State",
-                    "alias": "x_axis_18",
+                    "alias": "breakdown_17",
                     "column": "flow_state",
                     "color": null
                   }
                 ],
-                "y": [],
-                "z": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1127,7 +1438,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "bytes",
-            "decimals": 2,
+            "decimals": 2.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1136,17 +1447,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1157,6 +1468,7 @@
           "queries": [
             {
               "query": "SELECT histogram(_timestamp) as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\", sum(flow_bytes_toserver) as \"y_axis_2\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "suricata_flows",
@@ -1188,15 +1500,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1219,7 +1532,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "bytes",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1228,19 +1541,39 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
-            "drilldown": [],
+            "drilldown": [
+              {
+                "name": "SpeedGuide",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.speedguide.net/port.php?port=${row.field[\"Source Port\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
             "connect_nulls": false,
             "no_value_replacement": "",
             "wrap_table_cells": false
@@ -1249,13 +1582,14 @@
           "queries": [
             {
               "query": "SELECT cast(src_port as text) as \"x_axis_2\", sum(flow_bytes_toserver) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_2 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": true,
               "fields": {
                 "stream": "suricata_flows",
                 "stream_type": "logs",
                 "x": [
                   {
-                    "label": "Src Port",
+                    "label": "Source Port",
                     "alias": "x_axis_2",
                     "column": "x_axis_2",
                     "color": null
@@ -1272,15 +1606,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1303,7 +1638,7 @@
             "show_legends": true,
             "legends_position": null,
             "unit": "bytes",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1312,19 +1647,39 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
-            "drilldown": [],
+            "drilldown": [
+              {
+                "name": "SpeedGuide",
+                "type": "byUrl",
+                "targetBlank": true,
+                "findBy": "name",
+                "data": {
+                  "url": "https://www.speedguide.net/port.php?port=${row.field[\"Destination Port\"]}",
+                  "folder": "",
+                  "dashboard": "",
+                  "tab": "",
+                  "passAllVariables": true,
+                  "variables": [
+                    {
+                      "name": "",
+                      "value": ""
+                    }
+                  ]
+                }
+              }
+            ],
             "connect_nulls": false,
             "no_value_replacement": "",
             "wrap_table_cells": false
@@ -1333,13 +1688,14 @@
           "queries": [
             {
               "query": "SELECT cast(dest_port as text) as \"x_axis_1\", sum(flow_bytes_toclient) as \"y_axis_1\"  FROM \"suricata_flows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": true,
               "fields": {
                 "stream": "suricata_flows",
                 "stream_type": "logs",
                 "x": [
                   {
-                    "label": "Dest Port",
+                    "label": "Destination Port",
                     "alias": "x_axis_1",
                     "column": "x_axis_1",
                     "color": null
@@ -1356,15 +1712,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1392,7 +1749,7 @@
           "config": {
             "show_legends": true,
             "legends_position": "right",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1401,17 +1758,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": true,
@@ -1422,6 +1779,7 @@
           "queries": [
             {
               "query": "SELECT histogram(_timestamp) as \"x_axis_1\", code as \"x_axis_2\", count(code) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1, x_axis_2 ORDER BY x_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1439,12 +1797,6 @@
                         "value": null
                       }
                     ]
-                  },
-                  {
-                    "label": "Code",
-                    "alias": "x_axis_2",
-                    "column": "code",
-                    "color": null
                   }
                 ],
                 "y": [
@@ -1457,15 +1809,23 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Code",
+                    "alias": "x_axis_2",
+                    "column": "code",
+                    "color": null
+                  }
+                ],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1487,7 +1847,7 @@
           "config": {
             "show_legends": true,
             "legends_position": "right",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1496,17 +1856,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1517,6 +1877,7 @@
           "queries": [
             {
               "query": "SELECT code as \"x_axis_1\", count(code) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1539,15 +1900,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1569,7 +1931,7 @@
           "config": {
             "show_legends": false,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1578,17 +1940,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1599,6 +1961,7 @@
           "queries": [
             {
               "query": "SELECT host as \"x_axis_1\", count(host) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1621,15 +1984,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1651,7 +2015,7 @@
           "config": {
             "show_legends": false,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1660,17 +2024,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1681,6 +2045,7 @@
           "queries": [
             {
               "query": "SELECT path as \"x_axis_1\", count(path) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1704,15 +2069,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1734,7 +2100,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1743,17 +2109,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1764,6 +2130,7 @@
           "queries": [
             {
               "query": "SELECT agent as \"x_axis_1\", count(agent) as \"y_axis_1\"  FROM \"web\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1787,15 +2154,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1817,7 +2185,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1826,17 +2194,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1847,6 +2215,7 @@
           "queries": [
             {
               "query": "SELECT code as \"x_axis_1\", method as \"y_axis_1\", count(code) as \"z_axis_1\"  FROM \"web\"  GROUP BY x_axis_1, y_axis_1 ORDER BY x_axis_1 ASC, y_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "web",
@@ -1878,15 +2247,16 @@
                     "aggregationFunction": "count"
                   }
                 ],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1914,7 +2284,7 @@
           "config": {
             "show_legends": false,
             "legends_position": "right",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -1923,17 +2293,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -1944,6 +2314,7 @@
           "queries": [
             {
               "query": "SELECT system_provider__name as \"x_axis_1\", count(system_provider__name) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -1967,15 +2338,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -1997,7 +2369,7 @@
           "config": {
             "show_legends": true,
             "legends_position": "bottom",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2006,17 +2378,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2027,6 +2399,7 @@
           "queries": [
             {
               "query": "SELECT system_channel as \"x_axis_1\", count(system_channel) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2050,15 +2423,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2080,7 +2454,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2089,17 +2463,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2110,6 +2484,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", count(system_computer) as \"y_axis_1\"  FROM \"windows\"  GROUP BY x_axis_1 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2133,15 +2508,16 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": []
               },
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2163,7 +2539,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2172,17 +2548,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2193,6 +2569,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", data_targetusername as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Security') AND system_eventid IN ('4624') GROUP BY x_axis_1, x_axis_2 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2202,12 +2579,6 @@
                     "label": "Computer",
                     "alias": "x_axis_1",
                     "column": "system_computer",
-                    "color": null
-                  },
-                  {
-                    "label": "User Name",
-                    "alias": "x_axis_2",
-                    "column": "data_targetusername",
                     "color": null
                   }
                 ],
@@ -2222,6 +2593,14 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "User Name",
+                    "alias": "x_axis_2",
+                    "column": "data_targetusername",
+                    "color": null
+                  }
+                ],
                 "filter": [
                   {
                     "type": "list",
@@ -2246,10 +2625,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2271,7 +2650,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2280,17 +2659,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2301,6 +2680,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", data_newprocessname as \"x_axis_2\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Security') AND system_eventid IN ('4688') GROUP BY x_axis_1, x_axis_2 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2310,12 +2690,6 @@
                     "label": "Computer",
                     "alias": "x_axis_1",
                     "column": "system_computer",
-                    "color": null
-                  },
-                  {
-                    "label": "Process Name",
-                    "alias": "x_axis_2",
-                    "column": "data_newprocessname",
                     "color": null
                   }
                 ],
@@ -2330,6 +2704,14 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Process Name",
+                    "alias": "x_axis_2",
+                    "column": "data_newprocessname",
+                    "color": null
+                  }
+                ],
                 "filter": [
                   {
                     "type": "list",
@@ -2354,10 +2736,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2379,7 +2761,7 @@
           "config": {
             "show_legends": true,
             "legends_position": "bottom",
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2388,17 +2770,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2409,6 +2791,7 @@
           "queries": [
             {
               "query": "SELECT system_eventid as \"x_axis_1\", count(system_eventid) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') GROUP BY x_axis_1 ORDER BY x_axis_1 ASC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2432,6 +2815,7 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [],
                 "filter": [
                   {
                     "type": "list",
@@ -2447,10 +2831,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2472,7 +2856,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2481,17 +2865,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2502,6 +2886,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_2\", data_destinationip as \"x_axis_3\", data_destinationport as \"x_axis_4\", data_destinationhostname as \"x_axis_5\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('3') GROUP BY x_axis_1, x_axis_2, x_axis_3, x_axis_4, x_axis_5 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2512,7 +2897,20 @@
                     "alias": "x_axis_1",
                     "column": "system_computer",
                     "color": null
-                  },
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Count",
+                    "alias": "y_axis_1",
+                    "column": "_timestamp",
+                    "color": "#5960b2",
+                    "aggregationFunction": "count",
+                    "sortBy": "DESC"
+                  }
+                ],
+                "z": [],
+                "breakdown": [
                   {
                     "label": "Image",
                     "alias": "x_axis_2",
@@ -2538,17 +2936,6 @@
                     "color": null
                   }
                 ],
-                "y": [
-                  {
-                    "label": "Count",
-                    "alias": "y_axis_1",
-                    "column": "_timestamp",
-                    "color": "#5960b2",
-                    "aggregationFunction": "count",
-                    "sortBy": "DESC"
-                  }
-                ],
-                "z": [],
                 "filter": [
                   {
                     "type": "list",
@@ -2573,10 +2960,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2598,7 +2985,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2607,17 +2994,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2628,6 +3015,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_2\", data_queryname as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('22') GROUP BY x_axis_1, x_axis_2, x_axis_3 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2637,18 +3025,6 @@
                     "label": "Computer",
                     "alias": "x_axis_1",
                     "column": "system_computer",
-                    "color": null
-                  },
-                  {
-                    "label": "Image",
-                    "alias": "x_axis_2",
-                    "column": "data_image",
-                    "color": null
-                  },
-                  {
-                    "label": "Query",
-                    "alias": "x_axis_3",
-                    "column": "data_queryname",
                     "color": null
                   }
                 ],
@@ -2663,6 +3039,20 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Image",
+                    "alias": "x_axis_2",
+                    "column": "data_image",
+                    "color": null
+                  },
+                  {
+                    "label": "Query",
+                    "alias": "x_axis_3",
+                    "column": "data_queryname",
+                    "color": null
+                  }
+                ],
                 "filter": [
                   {
                     "type": "list",
@@ -2687,10 +3077,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],
@@ -2712,7 +3102,7 @@
           "config": {
             "show_legends": true,
             "legends_position": null,
-            "decimals": 0,
+            "decimals": 0.0,
             "axis_border_show": false,
             "legend_width": {
               "unit": "px"
@@ -2721,17 +3111,17 @@
               "type": "osm"
             },
             "map_view": {
-              "zoom": 1,
-              "lat": 0,
-              "lng": 0
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
             },
             "map_symbol_style": {
               "size": "by Value",
               "size_by_value": {
-                "min": 1,
-                "max": 100
+                "min": 1.0,
+                "max": 100.0
               },
-              "size_fixed": 2
+              "size_fixed": 2.0
             },
             "drilldown": [],
             "connect_nulls": false,
@@ -2742,6 +3132,7 @@
           "queries": [
             {
               "query": "SELECT system_computer as \"x_axis_1\", data_image as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"windows\" WHERE system_channel IN ('Microsoft-Windows-Sysmon/Operational') AND system_eventid IN ('1') GROUP BY x_axis_1, x_axis_3 ORDER BY y_axis_1 DESC",
+              "vrlFunctionQuery": null,
               "customQuery": false,
               "fields": {
                 "stream": "windows",
@@ -2751,12 +3142,6 @@
                     "label": "Computer",
                     "alias": "x_axis_1",
                     "column": "system_computer",
-                    "color": null
-                  },
-                  {
-                    "label": "Image",
-                    "alias": "x_axis_3",
-                    "column": "data_image",
                     "color": null
                   }
                 ],
@@ -2771,6 +3156,14 @@
                   }
                 ],
                 "z": [],
+                "breakdown": [
+                  {
+                    "label": "Image",
+                    "alias": "x_axis_3",
+                    "column": "data_image",
+                    "color": null
+                  }
+                ],
                 "filter": [
                   {
                     "type": "list",
@@ -2795,10 +3188,10 @@
               "config": {
                 "promql_legend": "",
                 "layer_type": "scatter",
-                "weight_fixed": 1,
-                "limit": 0,
-                "min": 0,
-                "max": 100
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0
               }
             }
           ],

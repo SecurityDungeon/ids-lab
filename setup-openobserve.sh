@@ -47,6 +47,7 @@ openobserve_api_post lab savedviews @openobserve/WindowsProcess.view.json
 
 # Admin user
 openobserve_api_post admin savedviews @openobserve/Docker.view.json
+openobserve_api_post admin savedviews @openobserve/Suricata.view.json
 
 echo "Create OpenObserve dashboards..."
 openobserve_api_post lab dashboards @openobserve/LabDashboard.dashboard.json

@@ -182,7 +182,7 @@ services:
       - suricatalogs:/var/log/suricata:ro
 
   openobserve:
-    image: openobserve/openobserve:v0.10.8-rc3
+    image: openobserve/openobserve:v0.10.8
     #container_name: openobserve
     restart: always
     environment:
