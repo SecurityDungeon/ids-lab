@@ -7,7 +7,10 @@ IDS and detections lab infrastructure deployable as docker containers.
 
 * `docker-compose`
 * `curl`
+* `tar`
+* `ip`
 * `pwgen` or `openssl`
+* some basic utils: `sort`, `wc`, `grep`, `sed`
 * *(optional)* `jq`
 
 # Setup
