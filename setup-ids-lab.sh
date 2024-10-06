@@ -28,7 +28,7 @@ echo "Setup mode: ${mode}"
 
 echo "Checking dependencies..."
 missing_dependency=0
-for program in docker-compose curl tar ip sort wc grep sed jq
+for program in docker-compose curl tar ip sort wc grep sed
 do
     if ! command -v ${program} 2>&1 >/dev/null
     then
