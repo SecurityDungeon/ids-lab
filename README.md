@@ -22,6 +22,26 @@ cd ids-lab
 ./setup-ids-lab.sh
 ```
 
+### Local/public mode
+
+There are two setup modes available: `local` and `public`. The setup mode is determined by `-m` option of `setup-ids-lab.sh` script. By default, the local mode is used:
+- in local mode, the IDS-Lab is listening only on localhost intefrace (127.0.0.1). Suitable for deploying IDS-Lab on your computer.
+- in public mode, the IDS-Lab is listening on all interfaces of the host. Suitable for deploying IDS-Lab on Virtual Machine (VM) or Virtual Private Server (VPS) or some public server. Be careful, in docker usually bypasses your local firewall rules (e.g. iptables) by adding its own rules.
+
+```
+$ ./setup-ids-lab.sh -h
+
+Usage: ./setup-ids-lab.sh [-m local|public]
+
+Options:
+	-m mode		setup mode of IDS-Lab
+                        available modes:
+                        local: (default) listen only on localhost, recommended for local setup on host machine
+			public: listen on all interfaces, recommended for setup in virtual machine or VPS
+                                Be careful, docker bypasses your iptables rules
+	-h		show this help
+```
+
 ## Automatic setup - oneliner
 If you prefer oneliner, you can download and run the setup script and it will create ids-lab in current directory:
 
