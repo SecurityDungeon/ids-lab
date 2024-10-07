@@ -6,6 +6,7 @@ IDS and detections lab infrastructure deployable as docker containers.
 # Prerequisites
 
 * `docker-compose`
+* `bash`
 * `curl`
 * `tar`
 * `ip`
@@ -20,7 +21,7 @@ IDS and detections lab infrastructure deployable as docker containers.
 Clone this repository and run `setup-ids-lab.sh`:
 
 ```
-https://github.com/SecurityDungeon/ids-lab.git
+git clone https://github.com/SecurityDungeon/ids-lab.git
 cd ids-lab
 ./setup-ids-lab.sh
 ```
@@ -49,7 +50,7 @@ Options:
 If you prefer oneliner, you can download and run the setup script and it will create ids-lab in current directory:
 
 ```
-curl -s https://raw.githubusercontent.com/SecurityDungeon/ids-lab/refs/heads/main/setup-ids-lab.sh | sh
+curl -s https://raw.githubusercontent.com/SecurityDungeon/ids-lab/refs/heads/main/setup-ids-lab.sh | bash
 ```
 
 ## Manual setup
