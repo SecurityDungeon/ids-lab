@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "dashboardId": "7248705476995579907",
+  "dashboardId": "7248720678759694339",
   "title": "Lab Dashboard",
   "description": "Alerts and Flows from IDS Suricata; Logs from WordPress; Windows Event logs and Sysmon logs",
   "role": "",
@@ -49,8 +49,8 @@
           "queryType": "sql",
           "queries": [
             {
-              "query": "SELECT alert_severity as \"x_axis_1\", alert_category as \"x_axis_2\", alert_signature as \"x_axis_3\", count(_timestamp) as \"y_axis_1\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3 ORDER BY x_axis_1 ASC, y_axis_1 DESC",
-              "vrlFunctionQuery": null,
+              "query": "SELECT alert_severity as \"x_axis_1\", alert_category as \"x_axis_2\", alert_signature as \"x_axis_3\", count(_timestamp) as \"y_axis_1\", alert_category as \"breakdown_1\", alert_signature as \"breakdown_2\"  FROM \"suricata_alerts\"  GROUP BY x_axis_1, x_axis_2, x_axis_3, breakdown_1, breakdown_2 ORDER BY x_axis_1 ASC, y_axis_1 DESC",
+              "vrlFunctionQuery": "",
               "customQuery": false,
               "fields": {
                 "stream": "suricata_alerts",
@@ -62,6 +62,20 @@
                     "column": "alert_severity",
                     "color": null,
                     "sortBy": "ASC"
+                  },
+                  {
+                    "label": "Alert Category",
+                    "alias": "x_axis_2",
+                    "column": "alert_category",
+                    "color": null,
+                    "isDerived": false
+                  },
+                  {
+                    "label": "Alert Signature",
+                    "alias": "x_axis_3",
+                    "column": "alert_signature",
+                    "color": null,
+                    "isDerived": false
                   }
                 ],
                 "y": [
@@ -78,13 +92,13 @@
                 "breakdown": [
                   {
                     "label": "Alert Category",
-                    "alias": "x_axis_2",
+                    "alias": "breakdown_1",
                     "column": "alert_category",
                     "color": null
                   },
                   {
                     "label": "Alert Signature",
-                    "alias": "x_axis_3",
+                    "alias": "breakdown_2",
                     "column": "alert_signature",
                     "color": null
                   }
