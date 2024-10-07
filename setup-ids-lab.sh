@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -u
+set -e
+
 help() {
     echo "
 Usage: $0 [-m local|public]
@@ -65,7 +68,7 @@ else
         echo "Repository ids-lab found in current directory. Skipping download"
     else
         echo "Downloading IDS-Lab files to the current directory"
-        curl https://github.com/SecurityDungeon/ids-lab/archive/refs/heads/main.tar.gz --output ids-lab-main.tar.gz 
+        curl --silent --location https://github.com/SecurityDungeon/ids-lab/archive/refs/heads/main.tar.gz --output ids-lab-main.tar.gz 
         tar xzf ids-lab-main.tar.gz
         mv ids-lab-main ids-lab
     fi
