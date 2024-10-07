@@ -115,7 +115,7 @@ echo "Building custom docker images for IDS-Lab..."
 docker-compose build
 
 echo "Creating IDS-Lab networks and containers..."
-docker-compose create
+docker-compose up --no-start
 
 echo "Starting IDS-Lab containers"
 docker-compose start

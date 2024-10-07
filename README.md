@@ -64,7 +64,7 @@ cp .env.model .env
 <edit> .env
 openssl req -x509 -newkey rsa:4096 -keyout ./nginx/ssl/privkey.pem -out ./nginx/ssl/fullchain.pem -sha256 -days 3650 -nodes -subj "/CN=*.ids-lab.home.arpa"
 docker-compose build
-docker-compose create
+docker-compose up --no-start
 docker-compose start
 ./setup-openobserbe.sh
 ```
