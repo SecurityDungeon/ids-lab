@@ -121,7 +121,7 @@ echo "Starting IDS-Lab containers"
 docker-compose start
 
 echo "Setup OpenObserve..."
-sh ./setup-openobserve.sh
+./setup-openobserve.sh
 
 echo "Running containers:"
 docker-compose ps
