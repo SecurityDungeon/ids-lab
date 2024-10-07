@@ -18,6 +18,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
       wpscan \
       sqlmap \
       john
-COPY  ../nginx/ssl/fullchain.pem /usr/local/share/ca-certificates/ids-lab.crt
+COPY  ./nginx/ssl/fullchain.pem /usr/local/share/ca-certificates/ids-lab.crt
 RUN update-ca-certificates
 CMD ["/bin/bash"]
