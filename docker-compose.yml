@@ -12,7 +12,7 @@ services:
       - 127.0.0.1:1337:1337
     environment:
       - KALI_PASSWORD
-    command: bash -c 'echo $${KALI_PASSWORD} | passwd -s; echo "$$(dig +short nginx) www www.ids-lab.home.arpa siem siem.ids-lab.home.arpa" >> /etc/hosts; shellinaboxd --disable-ssl --port=1337'
+    command: bash -c 'echo $${KALI_PASSWORD} | passwd -s; sleep 5; echo "$$(dig +short nginx) www www.ids-lab.home.arpa siem siem.ids-lab.home.arpa" >> /etc/hosts; shellinaboxd --disable-ssl --port=1337'
     restart: always
     depends_on:
       - nginx
