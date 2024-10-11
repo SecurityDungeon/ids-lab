@@ -82,23 +82,23 @@ services:
     volumes:
       - mysqldb:/var/lib/mysql
 
-  accounting:
-    image: linuxserver/rdesktop:ubuntu-openbox
-    #container_name: accounting
-    restart: always
-    networks:
-      - lab
-    #ports:
-    #  - 127.0.0.1:3389:3389
-    depends_on:
-      - fluentbit
-    logging:
-      driver: fluentd
-      options:
-        tag: docker.accounting
-    volumes:
-      - rdesktop:/config
-      - ./rdesktop/openbox:/config/.config/openbox
+#  accounting:
+#    image: linuxserver/rdesktop:ubuntu-openbox
+#    #container_name: accounting
+#    restart: always
+#    networks:
+#      - lab
+#    #ports:
+#    #  - 127.0.0.1:3389:3389
+#    depends_on:
+#      - fluentbit
+#    logging:
+#      driver: fluentd
+#      options:
+#        tag: docker.accounting
+#    volumes:
+#      - rdesktop:/config
+#      - ./rdesktop/openbox:/config/.config/openbox
 
   wireguard:
     image: linuxserver/wireguard:latest
