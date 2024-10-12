@@ -23,6 +23,7 @@ Clone this repository and run `setup-ids-lab.sh`:
 ```
 git clone https://github.com/SecurityDungeon/ids-lab.git
 cd ids-lab
+git checkout linuxdays
 ./setup-ids-lab.sh
 ```
 
